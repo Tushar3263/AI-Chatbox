@@ -125,20 +125,43 @@ body {
 }
 
 .ai-chat-box {
-    width: 70%; /* Fixed width, consider using percentages */
+    width: 70%; /* Responsive width */
     padding: 20px;
     background-color: rgba(120, 169, 215, 0.276);
     display: flex;
+    justify-content: space-between;  /* Ensure the button stays next to the text */
     gap: 20px;
     border-radius: 30px 30px 30px 0px;
     color: rgba(255, 255, 255, 0.758);
     font-size: 20px;
     box-shadow: 2px 4px 10px black;
+    position: relative;
+    align-items: center;  /* Ensure everything is vertically centered */
 }
 
 .loading {
     filter: drop-shadow(2px 2px 2px black);
 }
+
+
+
+/* Add styling for the copy button */
+.copy-btn {
+    background-color: rgb(8, 146, 188);
+    border: 1px solid #888;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 20px;
+    margin-left: auto;  /* Align the button to the right of the content */
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    background-color: #e0e0e0;
+}
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
