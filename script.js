@@ -4,7 +4,7 @@ let chatContainer = document.querySelector(".chat-container");
 let btn = document.querySelector(".btn");
 let userMessage = null;
 
-// const Api_url=paste here your api url , you can watch it on my video
+// Your API URL
 let Api_url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyD_J-5Wz16YUOPcIxQ3_s-venS2ap3-dQY';
 
 function createChatBox(html, className) {
@@ -31,11 +31,36 @@ async function generateApiResponse(aiChatBox) {
         const apiResponse = data?.candidates[0].content.parts[0].text.trim();
         textElement.innerText = apiResponse;
 
+        // Create and append the copy button
+        const copyButton = document.createElement("button");
+        copyButton.classList.add("copy-btn");
+        copyButton.innerText = "Copy";
+        copyButton.addEventListener("click", () => copyToClipboard(apiResponse, copyButton));
+        aiChatBox.appendChild(copyButton);
+
     } catch (error) {
         console.log(error);
     } finally {
         aiChatBox.querySelector(".loading").style.display = "none";
     }
+}
+
+// Copy text to clipboard and update button text to "Copied"
+function copyToClipboard(text, copyButton) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+
+    // Change the button text to "Copied"
+    copyButton.innerText = "Copied";
+
+    // Revert the button text to "Copy" after 2 seconds
+    setTimeout(() => {
+        copyButton.innerText = "Copy";
+    }, 2000);
 }
 
 function showLoading() {
