@@ -190,17 +190,20 @@ body {
 
 @media (max-width: 480px) {
     .btn {
-        width: 30%; /* Make the button wider on very small screens */
+        width: 20%; /* Make the button wider on very small screens */
+        margin-bottom: 50px;
+        
     }
 
     .prompt {
-        width: 90%; /* Adjust input field width */
+        width: 65%; /* Adjust input field width */
+        margin-bottom: 50px;
     }
 
     .chat-container {
         padding: 10px; /* Reduce padding for small devices */
     }
     .container{
-        padding-top: 350px;
+        padding-top: 250px;
     }
 }
